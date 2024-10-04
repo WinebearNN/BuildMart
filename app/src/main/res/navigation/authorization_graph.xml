@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.versaiilers.buildmart.SignInFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainAuthFragment"
-        android:name="com.versaiilers.buildmart.MainAuthFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.MainAuthFragment"
         android:label="fragment_main_auth"
         tools:layout="@layout/fragment_main_auth" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.versaiilers.buildmart.RegistrationFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action

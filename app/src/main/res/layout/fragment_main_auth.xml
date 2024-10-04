@@ -4,80 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainAuthFragment">
+    android:background="#F5F5F5"
+    tools:context=".presentation.ui.MainAuthFragment">
 
-
+    <!-- Название приложения -->
     <TextView
         android:id="@+id/fragment_main_auth_textView_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="119dp"
-        android:layout_marginBottom="542dp"
-        android:text="@string/fragment_main_auth_textView_logo"
+        android:layout_marginTop="140dp"
+        android:text="BuildMart"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_main_auth_imageView_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /> <!-- Увеличенный отступ сверху -->
 
-
+    <!-- Логотип приложения -->
     <ImageView
         android:id="@+id/fragment_main_auth_imageView_logo"
-        android:layout_width="91dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/baseline_build_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_main_auth_textView_logo" />
 
+    <!-- Кнопка "Вход" -->
     <Button
         android:id="@+id/fragment_main_auth_button_signIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="65dp"
         android:backgroundTint="@color/black"
-        android:text="@string/fragment_main_auth_button_signIn"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:text="Вход"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_main_auth_textView_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_main_auth_imageView_logo" />
 
+    <!-- Разделитель "или" -->
     <TextView
         android:id="@+id/fragment_main_auth_textView_or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
-        android:text="@string/fragment_main_auth_textView_or"
+        android:layout_marginTop="16dp"
+        android:text="или"
         android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_main_auth_button_register"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_main_auth_textView_logo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_main_auth_button_signIn" />
 
+    <!-- Кнопка "Регистрация" -->
     <Button
         android:id="@+id/fragment_main_auth_button_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="412dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/black"
-        android:text="@string/fragment_main_auth_button_register"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:text="Регистрация"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_main_auth_textView_logo" />
-
+        app:layout_constraintTop_toBottomOf="@id/fragment_main_auth_textView_or" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

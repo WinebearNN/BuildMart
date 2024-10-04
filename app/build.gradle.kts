@@ -1,12 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt") // добавляем плагин для ObjectBox
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
     namespace = "com.versaiilers.buildmart"
     compileSdk = 34
 
+    viewBinding {
+        enable = true
+    }
     defaultConfig {
         applicationId = "com.versaiilers.buildmart"
         minSdk = 24
@@ -40,9 +46,23 @@ android {
 
 dependencies {
 
+
+//        // debugImplementation because LeakCanary should only run in debug builds.
+//        debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.14")
+
+    // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+// https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     val nav_version = "2.8.1"
 
     // Jetpack Compose integration
@@ -66,4 +86,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("io.objectbox:objectbox-kotlin:3.6.0") // последняя версия библиотеки
+    kapt("io.objectbox:objectbox-processor:3.6.0") // для генерации кода, используем kapt
+
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-compiler:2.52")
+
+}
+kapt {
+    correctErrorTypes = true
 }
