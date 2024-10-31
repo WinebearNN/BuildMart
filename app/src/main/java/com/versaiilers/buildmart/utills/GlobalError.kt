@@ -1,4 +1,4 @@
-package com.versaiilers.buildmart.Utills
+package com.versaiilers.buildmart.utills
 
 data class GlobalError(val code: Int, val description: String)
 

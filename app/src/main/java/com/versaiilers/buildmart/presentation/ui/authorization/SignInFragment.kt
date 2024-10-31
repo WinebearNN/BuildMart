@@ -1,30 +1,20 @@
-package com.versaiilers.buildmart.presentation.ui
+package com.versaiilers.buildmart.presentation.ui.authorization
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.versaiilers.buildmart.R
-import com.versaiilers.buildmart.data.datasource.RemoteDataSource
-import com.versaiilers.buildmart.data.network.ApiServiceProvider
-import com.versaiilers.buildmart.data.repository.UserRepositoryImpl
 import com.versaiilers.buildmart.databinding.FragmentSignInBinding
-import com.versaiilers.buildmart.domain.useCase.RegisterUserUseCase
-import com.versaiilers.buildmart.domain.useCase.SignInUserUseCase
-import com.versaiilers.buildmart.presentation.viewmodel.RegistrationViewModel
-import com.versaiilers.buildmart.presentation.viewmodel.RegistrationViewModelFactory
 import com.versaiilers.buildmart.presentation.viewmodel.SignInViewModel
-import com.versaiilers.buildmart.presentation.viewmodel.SignInViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
 
 
@@ -58,7 +48,7 @@ class SignInFragment : Fragment() {
         // Обработчик кнопки "Назад"
         binding.fragmentSignInButtonGoBack.setOnClickListener {
             Navigation.findNavController(binding.root)
-                .navigate(R.id.action_registrationFragment_to_mainAuthFragment)
+                .navigate(R.id.action_signInFragment_to_mainAuthFragment)
         }
 
         // Обработчик кнопки "Регистрация"
@@ -105,6 +95,10 @@ class SignInFragment : Fragment() {
                 // Успешная регистрация
                 Log.i("SignIn Fragment", "Sign in Successful")
                 Toast.makeText(requireContext(), "Sign in Successful", Toast.LENGTH_SHORT).show()
+
+                Navigation.findNavController(binding.root).navigate(
+                    R.id.action_signInFragment_to_profileFragment
+                )
             }.onFailure { exception ->
                 // Ошибка регистрации (не связанная с валидацией)
                 Log.e("SignIn Fragment", exception.message.toString())

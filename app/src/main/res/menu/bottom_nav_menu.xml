@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Главная" />
+    <item
+        android:id="@+id/interior"
+        android:icon="@drawable/baseline_whatshot_24"
+        android:title="Идеи" />
+    <item
+        android:id="@+id/project"
+        android:icon="@drawable/baseline_work_24"
+        android:title="Проекты" />
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/baseline_chat_24"
+        android:title="Сообщения" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Профиль" />
+</menu>

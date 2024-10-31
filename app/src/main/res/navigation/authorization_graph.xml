@@ -7,16 +7,19 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.versaiilers.buildmart.presentation.ui.SignInFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_mainAuthFragment"
             app:destination="@id/mainAuthFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainAuthFragment"
-        android:name="com.versaiilers.buildmart.presentation.ui.MainAuthFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.MainAuthFragment"
         android:label="fragment_main_auth"
         tools:layout="@layout/fragment_main_auth" >
         <action
@@ -25,14 +28,38 @@
         <action
             android:id="@+id/action_mainAuthFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_mainAuthFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.versaiilers.buildmart.presentation.ui.RegistrationFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registrationFragment_to_mainAuthFragment"
             app:destination="@id/mainAuthFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.profile.ProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_chatFragment"
+            app:destination="@id/chat" />
+    </fragment>
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.versaiilers.buildmart.presentation.ui.chat.ChatFragment"
+        android:label="Чаты"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

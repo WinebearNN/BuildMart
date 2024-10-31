@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.versaiilers.buildmart.Utills.ErrorException
-import com.versaiilers.buildmart.Utills.GlobalError
+import com.versaiilers.buildmart.utills.ErrorException
+import com.versaiilers.buildmart.utills.GlobalError
 import com.versaiilers.buildmart.domain.entity.User
 import com.versaiilers.buildmart.domain.useCase.RegisterUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

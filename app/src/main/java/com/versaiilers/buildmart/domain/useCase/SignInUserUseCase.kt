@@ -1,12 +1,13 @@
 package com.versaiilers.buildmart.domain.useCase
 
-import com.versaiilers.buildmart.Utills.ErrorCode
-import com.versaiilers.buildmart.Utills.ErrorException
-import com.versaiilers.buildmart.Utills.GlobalError
+import com.versaiilers.buildmart.utills.CheckValidation.Companion.isValidEmail
+import com.versaiilers.buildmart.utills.CheckValidation.Companion.isValidPassword
+import com.versaiilers.buildmart.utills.ErrorCode
+import com.versaiilers.buildmart.utills.ErrorException
+import com.versaiilers.buildmart.utills.GlobalError
 import com.versaiilers.buildmart.domain.entity.User
 import com.versaiilers.buildmart.domain.repository.UserRepository
 import javax.inject.Inject
-
 
 
 class SignInUserUseCase @Inject constructor(private val userRepository: UserRepository) {
@@ -38,13 +39,5 @@ class SignInUserUseCase @Inject constructor(private val userRepository: UserRepo
         }
     }
 
-    // Валидация email
-    private fun isValidEmail(email: String): Boolean {
-        return email.contains("@") // Можно улучшить регулярным выражением для более строгой проверки
-    }
 
-    // Валидация пароля
-    private fun isValidPassword(password: String): Boolean {
-        return password.length >= 6 // Можно добавить дополнительные проверки
-    }
 }

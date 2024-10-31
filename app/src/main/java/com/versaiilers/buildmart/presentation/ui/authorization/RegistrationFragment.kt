@@ -1,4 +1,4 @@
-package com.versaiilers.buildmart.presentation.ui
+package com.versaiilers.buildmart.presentation.ui.authorization
 
 import android.os.Bundle
 import android.util.Log
@@ -91,6 +91,9 @@ class RegistrationFragment : Fragment() {
                 Toast.makeText(requireContext(), "Registration Successful", Toast.LENGTH_SHORT)
                     .show()
                 Log.i("Registration Fragment", "Registration successful")
+                Navigation.findNavController(binding.root).navigate(
+                    R.id.action_registrationFragment_to_profileFragment
+                )
             }.onFailure { exception ->
                 Log.e("Registration Fragment", exception.message.toString());
                 Toast.makeText(requireContext(), "Error: ${exception.message}", Toast.LENGTH_SHORT)

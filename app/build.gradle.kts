@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -87,6 +88,12 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+// https://mvnrepository.com/artifact/com.getkeepsafe.relinker/relinker
+    implementation("com.getkeepsafe.relinker:relinker:1.4.5")
+
+
+    implementation ("io.objectbox:objectbox-android:3.6.0") // проверь последнюю версию
     implementation("io.objectbox:objectbox-kotlin:3.6.0") // последняя версия библиотеки
     kapt("io.objectbox:objectbox-processor:3.6.0") // для генерации кода, используем kapt
 

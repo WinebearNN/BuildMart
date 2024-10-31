@@ -8,6 +8,7 @@ import java.util.Date
 @Entity
 data class User(
     @Id var id:Long=0,
+    var globalId:Long=0,
     var email: String = "",
     var password: String = "",
     var phoneNumber: String = "",

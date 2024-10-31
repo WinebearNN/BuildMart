@@ -1,4 +1,4 @@
-package com.versaiilers.buildmart.Utills
+package com.versaiilers.buildmart.utills
 
 enum class ErrorCode(val description: String){
     CODE_100("Invalid email format"),
