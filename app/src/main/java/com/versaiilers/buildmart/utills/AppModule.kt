@@ -1,6 +1,6 @@
 package com.versaiilers.buildmart.utills
 
-import com.versaiilers.buildmart.data.datasource.RemoteDataSourceUser
+import com.versaiilers.buildmart.data.datasource.user.RemoteDataSourceUser
 import com.versaiilers.buildmart.data.network.ApiServiceUser
 import com.versaiilers.buildmart.data.network.ApiServiceProvider
 import com.versaiilers.buildmart.data.repository.UserRepositoryImpl
@@ -14,19 +14,56 @@ import javax.inject.Singleton
 import android.content.Context
 import android.util.Log
 import com.getkeepsafe.relinker.ReLinker
-import com.versaiilers.buildmart.data.datasource.LocalDataSourceChat
-import com.versaiilers.buildmart.data.datasource.RemoteDataSourceChat
+import com.versaiilers.buildmart.data.datasource.chat.LocalDataSourceChat
+import com.versaiilers.buildmart.data.datasource.chat.RemoteDataSourceChat
+import com.versaiilers.buildmart.data.datasource.message.LocalDataSourceMessage
+import com.versaiilers.buildmart.data.datasource.message.RemoteDataSourceMessage
+import com.versaiilers.buildmart.data.datasource.user.LocalDataSourceUser
 import com.versaiilers.buildmart.data.network.ApiServiceChat
-import com.versaiilers.buildmart.data.repository.ChatRepositoryImpl
-import com.versaiilers.buildmart.domain.repository.ChatRepository
+import com.versaiilers.buildmart.data.network.ApiServiceMessage
+import com.versaiilers.buildmart.data.network.WebSocketConnection
+import com.versaiilers.buildmart.data.repository.ChatMessageRepositoryImpl
+import com.versaiilers.buildmart.domain.repository.ChatMessageRepository
 import com.versaiilers.buildmart.domain.repository.UserRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
-import okhttp3.WebSocket
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideWebSocketConnection(okHttpClient: OkHttpClient): WebSocketConnection {
+        return WebSocketConnection(okHttpClient)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSourceChat(
+        apiServiceChat: ApiServiceChat,
+        webSocketConnection: WebSocketConnection
+    ): RemoteDataSourceChat {
+        return RemoteDataSourceChat(apiServiceChat, webSocketConnection)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSourceMessage(
+        apiServiceMessage: ApiServiceMessage,
+        webSocketConnection: WebSocketConnection
+    ): RemoteDataSourceMessage {
+        return RemoteDataSourceMessage(apiServiceMessage, webSocketConnection)
+    }
+
 
     @Provides
     @Singleton
@@ -42,20 +79,30 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWebSocketClient(): OkHttpClient{
-        return ApiServiceProvider.webSocketClient
+    fun provideApiServiceMessage(): ApiServiceMessage {
+        return ApiServiceProvider.apiServiceMessage
     }
+
 
     @Provides
     @Singleton
     fun provideRemoteDataSourceUser(apiServiceUser: ApiServiceUser): RemoteDataSourceUser {
         return RemoteDataSourceUser(apiServiceUser)  // Предоставляем RemoteDataSource
     }
+
     @Provides
     @Singleton
-    fun provideRemoteDataSourceChat(apiServiceChat: ApiServiceChat,webSocketClient: OkHttpClient): RemoteDataSourceChat {
-        return RemoteDataSourceChat(apiServiceChat,webSocketClient) // Предоставляем RemoteDataSource
+    fun provideLocalDataSourceUser(boxStore: BoxStore): LocalDataSourceUser {
+        return LocalDataSourceUser(boxStore)
     }
+
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSourceMessage(boxStore: BoxStore): LocalDataSourceMessage {
+        return LocalDataSourceMessage(boxStore)
+    }
+
 
     @Provides
     @Singleton
@@ -68,18 +115,28 @@ object AppModule {
     @Singleton
     fun provideUserRepository(
         remoteDataSourceUser: RemoteDataSourceUser,
-        boxStore: BoxStore
+        localDataSourceUser: LocalDataSourceUser
     ): UserRepository { // Изменено на UserRepository
-        return UserRepositoryImpl(remoteDataSourceUser, boxStore)  // Предоставляем UserRepositoryImpl как UserRepository
+        return UserRepositoryImpl(
+            remoteDataSourceUser,
+            localDataSourceUser
+        )  // Предоставляем UserRepositoryImpl как UserRepository
     }
 
     @Provides
     @Singleton
     fun provideChatRepository(
         remoteDataSourceChat: RemoteDataSourceChat,
-        localDataSourceChat: LocalDataSourceChat
-    ): ChatRepository{
-        return ChatRepositoryImpl(localDataSourceChat,remoteDataSourceChat)
+        localDataSourceChat: LocalDataSourceChat,
+        localDataSourceMessage: LocalDataSourceMessage,
+        remoteDataSourceMessage: RemoteDataSourceMessage
+    ): ChatMessageRepository {
+        return ChatMessageRepositoryImpl(
+            localDataSourceChat,
+            remoteDataSourceChat,
+            localDataSourceMessage,
+            remoteDataSourceMessage
+        )
     }
 
     @Provides

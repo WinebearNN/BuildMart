@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConversationFragment">
+    android:background="@color/white"
+    tools:context=".presentation.ui.conversation.ConversationFragment">
 
     <ImageButton
         android:id="@+id/conversation_fragment_button_go_back"
@@ -30,40 +31,33 @@
         app:layout_constraintStart_toEndOf="@id/conversation_fragment_button_go_back"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- ScrollView с максимальным доступным пространством -->
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <!-- RecyclerView для отображения сообщений -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversation_fragment_recycle_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/conversation_fragment_textView_chat_name"
-        app:layout_constraintBottom_toTopOf="@id/messageEditText"
+        app:layout_constraintBottom_toTopOf="@id/conversation_fragment_editText_type_message"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/conversation_fragment_recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/messageEditText"
+        android:id="@+id/conversation_fragment_editText_type_message"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_weight="1"
         android:background="@drawable/edit_text_background"
         android:hint="Type your message"
         android:inputType="textMultiLine"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sendButton"
+        app:layout_constraintEnd_toStartOf="@id/conversation_fragment_button_send_message"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Кнопка отправки сообщения -->
     <ImageButton
-        android:id="@+id/sendButton"
+        android:id="@+id/conversation_fragment_button_send_message"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"

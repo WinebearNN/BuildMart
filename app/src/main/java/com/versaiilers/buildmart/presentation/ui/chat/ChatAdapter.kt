@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.versaiilers.buildmart.databinding.ItemChatBinding
 import com.versaiilers.buildmart.domain.entity.Chat
 
-class ChatAdapter : ListAdapter<Chat, ChatAdapter.ChatViewHolder>(ChatDiffCallback()) {
+class ChatAdapter(private val onChatClick: (Long) -> Unit) : ListAdapter<Chat, ChatAdapter.ChatViewHolder>(ChatDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val binding = ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -16,15 +16,16 @@ class ChatAdapter : ListAdapter<Chat, ChatAdapter.ChatViewHolder>(ChatDiffCallba
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        val chat = getItem(position)
-        holder.bind(chat)
+        holder.bind(getItem(position), onChatClick)
     }
 
     class ChatViewHolder(private val binding: ItemChatBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(chat: Chat) {
-            // Прямой доступ к полям участника
+        fun bind(chat: Chat, onChatClick: (Long) -> Unit) {
             binding.chatName.text = chat.participantFirstName
             binding.lastMessage.text = chat.lastMessage
+            binding.root.setOnClickListener {
+                onChatClick(chat.globalId)
+            }
         }
     }
 }

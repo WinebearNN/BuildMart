@@ -1,4 +1,4 @@
-package com.versaiilers.buildmart.data.datasource
+package com.versaiilers.buildmart.data.datasource.user
 
 import android.util.Log
 import com.google.gson.Gson

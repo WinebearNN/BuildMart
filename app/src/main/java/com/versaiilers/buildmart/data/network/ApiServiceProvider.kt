@@ -24,6 +24,10 @@ object ApiServiceProvider {
         retrofit.create(ApiServiceChat::class.java)
     }
 
+    val apiServiceMessage:ApiServiceMessage by lazy {
+        retrofit.create(ApiServiceMessage::class.java)
+    }
+
     val webSocketClient: OkHttpClient by lazy {
         OkHttpClient.Builder().build()  // Создаем экземпляр OkHttpClient через builder
     }
