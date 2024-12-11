@@ -3,7 +3,7 @@ package com.versaiilers.buildmart.data.datasource.user
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.versaiilers.buildmart.data.network.ApiServiceUser
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceUser
 import com.versaiilers.buildmart.data.network.RegisterUserRequest
 import com.versaiilers.buildmart.domain.entity.User
 import kotlinx.coroutines.Dispatchers

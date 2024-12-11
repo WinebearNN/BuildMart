@@ -3,6 +3,7 @@ package com.versaiilers.buildmart.data.network
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceProvider
 import com.versaiilers.buildmart.domain.entity.Message
 import okhttp3.OkHttpClient
 import okhttp3.Request

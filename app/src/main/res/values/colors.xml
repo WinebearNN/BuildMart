@@ -5,4 +5,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_red">#ff6161</color>
     <color name="grey">#4e586e</color>
+    <color name="blue">#186CAF</color>
+    <color name="primaryColor">#FF5733</color>
+    <color name="secondaryColor">#C70039</color>
+    <color name="textColor">#FFFFFF</color>
 </resources>

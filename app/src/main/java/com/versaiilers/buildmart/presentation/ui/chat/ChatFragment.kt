@@ -59,6 +59,7 @@ class ChatFragment : Fragment() {
         viewModel.newMessage.observe(viewLifecycleOwner) { newMessage ->
             Toast.makeText(requireContext(), "New message: ${newMessage.content}", Toast.LENGTH_SHORT).show()
         }
+        //TODO проверить
 
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()

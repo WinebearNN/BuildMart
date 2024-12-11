@@ -43,12 +43,18 @@ class ConversationAdapter(private val userGlobalId: Long) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
-        if (holder is LeftMessageViewHolder) {
-            holder.bind(message)
-        } else if (holder is RightMessageViewHolder) {
-            holder.bind(message)
-        } else {
-            throw Exception("ConversationAdapter: Incorrect ViewHolder type")
+        when (holder) {
+            is LeftMessageViewHolder -> {
+                holder.bind(message)
+            }
+
+            is RightMessageViewHolder -> {
+                holder.bind(message)
+            }
+
+            else -> {
+                throw Exception("$TAG: Incorrect ViewHolder type")
+            }
         }
     }
 

@@ -15,7 +15,7 @@ android {
     }
     defaultConfig {
         applicationId = "com.versaiilers.buildmart"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -51,6 +51,33 @@ dependencies {
 //        // debugImplementation because LeakCanary should only run in debug builds.
 //        debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.14")
 
+
+    // Облегченная библиотека, содержит только карту, слой пробок,
+    // LocationManager, UserLocationLayer
+    // и возможность скачивать офлайн-карты (только в платной версии).
+    implementation ("com.yandex.android:maps.mobile:4.9.0-lite")
+
+    // Полная библиотека в дополнение к lite версии предоставляет автомобильную маршрутизацию,
+    // веломаршрутизацию, пешеходную маршрутизацию и маршрутизацию на общественном транспорте,
+    // поиск, suggest, геокодирование и отображение панорам.
+    // implementation 'com.yandex.android:maps.mobile:4.9.0-full'
+
+
+
+    // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+// https://mvnrepository.com/artifact/com.github.bumptech.glide/annotations
+    implementation("com.github.bumptech.glide:annotations:4.16.0")
+
+    annotationProcessor( libs.compiler) // Или последнюю версию
+
+
+    // https://mvnrepository.com/artifact/androidx.viewpager2/viewpager2
+    runtimeOnly("androidx.viewpager2:viewpager2:1.0.0")
+
+
+
+    implementation("androidx.core:core:1.12.0") // Use the latest stable version
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 // https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
@@ -93,7 +120,7 @@ dependencies {
     implementation("com.getkeepsafe.relinker:relinker:1.4.5")
 
 
-    implementation ("io.objectbox:objectbox-android:3.6.0") // проверь последнюю версию
+    implementation("io.objectbox:objectbox-android:3.6.0") // проверь последнюю версию
     implementation("io.objectbox:objectbox-kotlin:3.6.0") // последняя версия библиотеки
     kapt("io.objectbox:objectbox-processor:3.6.0") // для генерации кода, используем kapt
 

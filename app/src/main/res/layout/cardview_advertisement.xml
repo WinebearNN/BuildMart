@@ -1,0 +1,119 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Изображение объекта -->
+        <ImageView
+            android:id="@+id/cardview_advertisement_property_image"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Цена (плашка поверх изображения) -->
+        <ImageButton
+            android:id="@+id/cardview_advertisement_save_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackground"
+            android:contentDescription="Сохранить"
+            android:src="@drawable/baseline_favorite_border_24"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:text="₽12,500,000"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/cardview_advertisement_property_image"
+            app:layout_constraintTop_toTopOf="@id/cardview_advertisement_property_image" />
+
+        <!-- Заголовок объявления -->
+        <TextView
+            android:id="@+id/cardview_advertisement_property_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Квартира 3 комнаты, 75 м²"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview_advertisement_property_image" />
+
+        <!-- Локация -->
+        <TextView
+            android:id="@+id/cardview_advertisement_property_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@drawable/baseline_location_24"
+            android:drawablePadding="8dp"
+            android:text="Москва, Тверская"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview_advertisement_property_title" />
+
+
+
+        <!-- Кнопки действия -->
+        <LinearLayout
+            android:id="@+id/cardview_advertisement_action_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview_advertisement_property_location">
+
+            <TextView
+                android:id="@+id/cardview_advertisement_textview_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.8"
+                android:textSize="24dp"
+                android:layout_gravity="bottom"
+                android:drawableRight="@drawable/baseline_star_rate_24"/>
+
+
+
+            <!-- Кнопка "Подробнее" -->
+            <TextView
+                android:id="@+id/cardview_advertisement_property_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="25sp"
+                android:layout_weight="1"
+                android:text="12 000 000,P"
+                android:textAlignment="gravity"
+                android:gravity="right|bottom"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+    <!-- Кнопка "Сохранить" -->
+<!--<ImageButton-->
+<!--android:layout_width="48dp"-->
+<!--android:layout_height="48dp"-->
+<!--android:background="?selectableItemBackground"-->
+<!--android:contentDescription="Сохранить"-->
+<!--android:src="@drawable/baseline_favorite_border_24" />-->

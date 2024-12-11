@@ -1,4 +1,4 @@
-package com.versaiilers.buildmart.data.network
+package com.versaiilers.buildmart.data.network.apiService
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,11 +20,15 @@ object ApiServiceProvider {
         retrofit.create(ApiServiceUser::class.java)
     }
 
+    val apiServiceAdvertisement:ApiServiceAdvertisement by lazy {
+        retrofit.create(ApiServiceAdvertisement::class.java)
+    }
+
     val apiServiceChat: ApiServiceChat by lazy {
         retrofit.create(ApiServiceChat::class.java)
     }
 
-    val apiServiceMessage:ApiServiceMessage by lazy {
+    val apiServiceMessage: ApiServiceMessage by lazy {
         retrofit.create(ApiServiceMessage::class.java)
     }
 

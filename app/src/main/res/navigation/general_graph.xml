@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/general_graph"
+    app:startDestination="@id/mainAuthFragment">
+
+    <!-- Фрагменты авторизации -->
+    <fragment
+        android:id="@+id/mainAuthFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.MainAuthFragment"
+        android:label="fragment_main_auth"
+        tools:layout="@layout/fragment_main_auth">
+        <action
+            android:id="@+id/action_mainAuthFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_mainAuthFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_mainAuthFragment_to_profileFragment"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_mainAuthFragment"
+            app:destination="@id/mainAuthFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_profileFragment"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.versaiilers.buildmart.presentation.ui.authorization.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_mainAuthFragment"
+            app:destination="@id/mainAuthFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_profileFragment"
+            app:destination="@id/profile" />
+    </fragment>
+
+    <!-- Фрагменты профиля -->
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.versaiilers.buildmart.presentation.ui.profile.ProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_chat"
+            app:destination="@id/chat" />
+        <action
+            android:id="@+id/action_profile_to_general"
+            app:destination="@id/general" />
+    </fragment>
+
+    <!-- Фрагменты чата -->
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.versaiilers.buildmart.presentation.ui.chat.ChatFragment"
+        android:label="Чаты"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chat_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_chat_to_conversation"
+            app:destination="@id/conversation">
+            <argument
+                android:name="chatGlobalId"
+                app:argType="long" />
+        </action>
+        <action
+            android:id="@+id/action_chat_to_general"
+            app:destination="@id/general" />
+    </fragment>
+    <fragment
+        android:id="@+id/conversation"
+        android:name="com.versaiilers.buildmart.presentation.ui.conversation.ConversationFragment"
+        android:label="fragment_conversation"
+        tools:layout="@layout/fragment_conversation">
+        <action
+            android:id="@+id/action_conversation_to_chat"
+            app:destination="@id/chat" />
+        <argument
+            android:name="chatGlobalId"
+            app:argType="long" />
+    </fragment>
+
+    <!-- Общие фрагменты -->
+    <fragment
+        android:id="@+id/general"
+        android:name="com.versaiilers.buildmart.presentation.ui.general.GeneralFragment"
+        android:label="fragment_general"
+        tools:layout="@layout/fragment_general">
+        <action
+            android:id="@+id/action_general_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_general_to_chat"
+            app:destination="@id/chat" />
+        <action
+            android:id="@+id/action_general_to_advertisement"
+            app:destination="@id/advertisement" />
+        <action
+            android:id="@+id/action_general_self"
+            app:destination="@id/general" />
+    </fragment>
+    <fragment
+        android:id="@+id/advertisement"
+        android:name="com.versaiilers.buildmart.presentation.ui.advertisement.AdvertisementFragment"
+        android:label="advertisement"
+        tools:layout="@layout/fragment_advertisement" >
+        <action
+            android:id="@+id/action_advertisement_to_general"
+            app:destination="@id/general" />
+        <action
+            android:id="@+id/action_advertisement_to_createAd"
+            app:destination="@id/createAd" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAd"
+        android:name="com.versaiilers.buildmart.presentation.ui.advertisement.CreateAdvertisementFragment"
+        android:label="CreateAd"
+        tools:layout="@layout/fragment_create_advertisement">
+        <action
+            android:id="@+id/action_createAd_to_advertisement"
+            app:destination="@id/advertisement" />
+    </fragment>
+</navigation>

@@ -1,5 +1,7 @@
-package com.versaiilers.buildmart.data.network
+package com.versaiilers.buildmart.data.network.apiService
 
+import com.versaiilers.buildmart.data.network.ApiResponse
+import com.versaiilers.buildmart.data.network.RegisterUserRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

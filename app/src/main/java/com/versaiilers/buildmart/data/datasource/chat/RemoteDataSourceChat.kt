@@ -4,17 +4,11 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.versaiilers.buildmart.data.network.ApiServiceChat
-import com.versaiilers.buildmart.data.network.ApiServiceProvider
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceChat
 import com.versaiilers.buildmart.data.network.WebSocketConnection
 import com.versaiilers.buildmart.domain.entity.Chat
 import com.versaiilers.buildmart.domain.entity.Message
 import jakarta.inject.Inject
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import okhttp3.WebSocket
-import okhttp3.WebSocketListener
 import java.text.SimpleDateFormat
 import java.util.Locale
 

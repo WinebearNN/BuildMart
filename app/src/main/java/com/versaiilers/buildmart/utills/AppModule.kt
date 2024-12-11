@@ -1,8 +1,8 @@
 package com.versaiilers.buildmart.utills
 
 import com.versaiilers.buildmart.data.datasource.user.RemoteDataSourceUser
-import com.versaiilers.buildmart.data.network.ApiServiceUser
-import com.versaiilers.buildmart.data.network.ApiServiceProvider
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceUser
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceProvider
 import com.versaiilers.buildmart.data.repository.UserRepositoryImpl
 import com.versaiilers.buildmart.domain.entity.MyObjectBox
 import dagger.Module
@@ -14,15 +14,19 @@ import javax.inject.Singleton
 import android.content.Context
 import android.util.Log
 import com.getkeepsafe.relinker.ReLinker
+import com.versaiilers.buildmart.data.datasource.advertisement.RemoteDataSourceAdvertisement
 import com.versaiilers.buildmart.data.datasource.chat.LocalDataSourceChat
 import com.versaiilers.buildmart.data.datasource.chat.RemoteDataSourceChat
 import com.versaiilers.buildmart.data.datasource.message.LocalDataSourceMessage
 import com.versaiilers.buildmart.data.datasource.message.RemoteDataSourceMessage
 import com.versaiilers.buildmart.data.datasource.user.LocalDataSourceUser
-import com.versaiilers.buildmart.data.network.ApiServiceChat
-import com.versaiilers.buildmart.data.network.ApiServiceMessage
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceChat
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceMessage
 import com.versaiilers.buildmart.data.network.WebSocketConnection
+import com.versaiilers.buildmart.data.network.apiService.ApiServiceAdvertisement
+import com.versaiilers.buildmart.data.repository.AdvertisementRepositoryImpl
 import com.versaiilers.buildmart.data.repository.ChatMessageRepositoryImpl
+import com.versaiilers.buildmart.domain.repository.AdvertisementRepository
 import com.versaiilers.buildmart.domain.repository.ChatMessageRepository
 import com.versaiilers.buildmart.domain.repository.UserRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -57,6 +61,14 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideRemoteDataSourceAdvertisement(
+        apiServiceAdvertisement:ApiServiceAdvertisement
+    ): RemoteDataSourceAdvertisement{
+        return RemoteDataSourceAdvertisement(apiServiceAdvertisement)
+    }
+
+    @Provides
+    @Singleton
     fun provideRemoteDataSourceMessage(
         apiServiceMessage: ApiServiceMessage,
         webSocketConnection: WebSocketConnection
@@ -65,6 +77,11 @@ object AppModule {
     }
 
 
+    @Provides
+    @Singleton
+    fun provideApiServiceAdvertisement(): ApiServiceAdvertisement{
+        return ApiServiceProvider.apiServiceAdvertisement
+    }
     @Provides
     @Singleton
     fun provideApiServiceUser(): ApiServiceUser {
@@ -122,6 +139,17 @@ object AppModule {
             localDataSourceUser
         )  // Предоставляем UserRepositoryImpl как UserRepository
     }
+
+    @Provides
+    @Singleton
+    fun provideAdvertisementRepository(
+        remoteDataSourceAdvertisement:RemoteDataSourceAdvertisement
+    ):AdvertisementRepository{
+        return AdvertisementRepositoryImpl(
+            remoteDataSourceAdvertisement
+        )
+    }
+
 
     @Provides
     @Singleton
