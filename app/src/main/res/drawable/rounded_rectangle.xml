@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Фон для четырехугольника -->
-    <solid android:color="@color/white"/> <!-- Цвет фона (можете изменить на любой) -->
+    <solid android:color="#DDDDDD"/> <!-- Цвет фона (можете изменить на любой) -->
 
     <!-- Радиус закругления углов -->
-    <corners android:radius="16dp"/>
+    <corners android:radius="5dp"/>
 
 <!--    &lt;!&ndash; Опционально: рамка для четырехугольника &ndash;&gt;-->
 <!--    <stroke-->

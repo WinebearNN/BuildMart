@@ -10,7 +10,11 @@ enum class PARKING_SPACE(val value: Int, val translation: String) {
 
     companion object {
         fun fromValue(value: Int): PARKING_SPACE? {
-            return values().find { it.value == value }
+            return entries.find { it.value == value }
+        }
+
+        fun fromTranslation(translation: String): PARKING_SPACE? {
+            return entries.find { it.translation == translation }
         }
     }
 }

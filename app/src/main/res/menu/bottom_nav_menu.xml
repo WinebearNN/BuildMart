@@ -9,18 +9,15 @@
         android:icon="@drawable/baseline_whatshot_24"
         android:title="Идеи" />
     <item
-        android:id="@+id/project"
+        android:id="@+id/map"
         android:icon="@drawable/baseline_work_24"
         android:title="Проекты" />
-
     <item
         android:id="@+id/chat"
         android:icon="@drawable/baseline_chat_24"
         android:title="Сообщения" />
-
     <item
         android:id="@+id/profile"
         android:icon="@drawable/baseline_person_24"
         android:title="Профиль" />
-
 </menu>

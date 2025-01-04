@@ -51,11 +51,16 @@ dependencies {
 //        // debugImplementation because LeakCanary should only run in debug builds.
 //        debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.14")
 
+//    //Эффект перекрутки и отката для scrollView
+//    implementation ("me.everything:overscroll-decor-android:1.0.4")
 
-    // Облегченная библиотека, содержит только карту, слой пробок,
-    // LocationManager, UserLocationLayer
-    // и возможность скачивать офлайн-карты (только в платной версии).
-    implementation ("com.yandex.android:maps.mobile:4.9.0-lite")
+
+//    // Облегченная библиотека, содержит только карту, слой пробок,
+//    // LocationManager, UserLocationLayer
+//    // и возможность скачивать офлайн-карты (только в платной версии).
+//    implementation ("com.yandex.android:maps.mobile:4.9.0-lite")
+
+    implementation ("com.yandex.android:maps.mobile:4.9.0-full")
 
     // Полная библиотека в дополнение к lite версии предоставляет автомобильную маршрутизацию,
     // веломаршрутизацию, пешеходную маршрутизацию и маршрутизацию на общественном транспорте,
@@ -126,6 +131,11 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.52")
     kapt("com.google.dagger:hilt-compiler:2.52")
+
+    implementation ("com.squareup.leakcanary:leakcanary-android:2.12")
+    debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.12")
+    implementation ("androidx.work:work-runtime:2.8.1")
+    implementation ("androidx.work:work-multiprocess:2.8.1")
 
 }
 kapt {

@@ -7,7 +7,10 @@ enum class GAS_TYPE(val value: Int, val translation: String) {
 
     companion object {
         fun fromValue(value: Int): GAS_TYPE? {
-            return values().find { it.value == value }
+            return entries.find { it.value == value }
+        }
+        fun fromTranslation(translation: String): GAS_TYPE? {
+            return entries.find { it.translation == translation }
         }
     }
 }

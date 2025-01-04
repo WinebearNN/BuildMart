@@ -1,35 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BuildMart</string>
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fragment_main_auth_textView_logo">BuildMart</string>
-    <string name="signIn">Вход</string>
-    <string name="or">Или</string>
-    <string name="registration">Регистрация</string>
-    <string name="email">Ваш email</string>
-
-
-
-
     <string name="exist">Есть</string>
     <string name="no">Нет</string>
     <string name="power_supply">Электричество</string>
     <string name="year_of_creation">Год постройки</string>
     <string name="choose">Выбрать</string>
     <string name="sewerage">Канализационная система</string>
-    <string name="absent">Отсутствует</string>
+    <string name="absent">Отсутсвует</string>
     <string name="well">Скважина</string>
     <string name="central">Центральное</string>
-    <string name="sump">Колодец</string>
     <string name="water_supply">Водоснабжение</string>
     <string name="liquid">Водяной</string>
     <string name="electric">Электрический</string>
@@ -38,7 +17,6 @@
     <string name="foundation">Фундамент</string>
     <string name="gas_provided_to_land">Подведен к земельному участку</string>
     <string name="gas_provided_to_house">Подведен к дому</string>
-    <string name="gas">Газ</string>
     <string name="wall_material">Материал стен</string>
     <string name="finish_type_almost">Предчистовая</string>
     <string name="finish_type_final">Чистовая</string>
@@ -73,4 +51,5 @@
     <string name="paved_road">Асфальтированная дорога</string>
     <string name="public_transport_stop">Остановка общественного транспорта</string>
     <string name="railway_station">Железнодорожная станция</string>
+
 </resources>

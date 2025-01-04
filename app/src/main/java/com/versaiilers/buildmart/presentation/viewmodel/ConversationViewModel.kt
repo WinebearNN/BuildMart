@@ -124,8 +124,8 @@ class ConversationViewModel @Inject constructor(
         }
     }
 
-//    override fun onCleared() {
-//        super.onCleared()
-//        disconnectWebSocket()
-//    }
+    override fun onCleared() {
+        super.onCleared()
+        disconnectWebSocket()
+    }
 }

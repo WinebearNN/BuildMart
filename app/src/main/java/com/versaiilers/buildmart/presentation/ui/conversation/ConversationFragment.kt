@@ -120,6 +120,9 @@ class ConversationFragment : Fragment() {
         // Показываем BottomNavigationView снова при выходе
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.visibility = View.VISIBLE
+//        viewModel.disconnectWebSocket()
+
+
     }
 
 

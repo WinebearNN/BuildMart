@@ -42,7 +42,7 @@ class MainAuthFragment : Fragment() {
                 R.id.action_mainAuthFragment_to_signInFragment
             )
         }
-        binding.fragmentMainAuthButtonRegister.findViewById<Button>(R.id.fragment_main_auth_button_register).setOnClickListener {
+        binding.fragmentMainAuthButtonRegister.setOnClickListener {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_mainAuthFragment_to_registrationFragment)
         }
@@ -54,12 +54,12 @@ class MainAuthFragment : Fragment() {
         viewModel.authResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { user ->
 //                Toast.makeText(this, "Authentication Successful", Toast.LENGTH_SHORT).show()
-                Log.i("MainActivity", "Authentication successful: ${user.displayName}")
+                Log.i("MainAuthFragment", "Authentication successful: ${user.displayName}")
                 Navigation.findNavController(view)
                     .navigate(R.id.action_mainAuthFragment_to_profileFragment)
 
             }.onFailure { exception ->
-                Log.e("MainActivity", exception.message.toString())
+                Log.e("MainAuthFragment", exception.message.toString())
 //                Toast.makeText(this, "Error: ${exception.message}", Toast.LENGTH_SHORT).show()
 
 
@@ -67,8 +67,10 @@ class MainAuthFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

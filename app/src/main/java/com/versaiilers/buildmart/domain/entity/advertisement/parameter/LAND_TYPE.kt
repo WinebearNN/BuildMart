@@ -7,9 +7,14 @@ enum class LAND_TYPE(val value: Int, val translation: String) {
     GUP(4, "Садовое некоммерческое товарищество"),
     KUP(5, "Фермерские некоммерческие товарищества");
 
+
     companion object {
         fun fromValue(value: Int): LAND_TYPE? {
-            return values().find { it.value == value }
+            return entries.find { it.value == value }
+        }
+
+        fun fromTranslation(translation: String): LAND_TYPE? {
+            return entries.find { it.translation == translation }
         }
     }
 }

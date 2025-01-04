@@ -9,4 +9,6 @@
     <color name="primaryColor">#FF5733</color>
     <color name="secondaryColor">#C70039</color>
     <color name="textColor">#FFFFFF</color>
+    <color name="buttonInactive">#DDDDDD</color>
+    <color name="buttonActive">#2F8FDB</color>
 </resources>

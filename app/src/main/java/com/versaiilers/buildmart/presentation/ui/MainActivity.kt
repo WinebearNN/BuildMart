@@ -9,14 +9,12 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.versaiilers.buildmart.R
-import com.yandex.mapkit.MapKitFactory
 import dagger.hilt.android.AndroidEntryPoint
+import leakcanary.LeakCanary
 
 
 @AndroidEntryPoint
@@ -28,6 +26,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        LeakCanary.config = LeakCanary.config.copy(
+            retainedVisibleThreshold = 1,
+            maxStoredHeapDumps = 10,  // Количество сохраняемых дампов памяти
+            requestWriteExternalStoragePermission = true, // Для сохранения дампов в хранилище
+            dumpHeap = true, // Отключите, если хотите использовать только наблюдение
+
+        )
+
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -37,28 +43,31 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        WindowCompat.getInsetsController(window,window.decorView).apply {
+        WindowCompat.getInsetsController(window, window.decorView).apply {
             systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             hide(WindowInsetsCompat.Type.statusBars())
         }
 
         //hideBars()
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
 
-        bottomNavigationView=findViewById(R.id.bottom_navigation)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
 
         // Настраиваем NavController с BottomNavigationView
-        bottomNavigationView.setupWithNavController( navController)
+        bottomNavigationView.setupWithNavController(navController)
 
         // Слушаем изменения навигации
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.mainAuthFragment -> hideBottomNavigationView()
-                R.id.registrationFragment-> hideBottomNavigationView()
-                R.id.signInFragment-> hideBottomNavigationView()
+                R.id.registrationFragment -> hideBottomNavigationView()
+                R.id.signInFragment -> hideBottomNavigationView()
+                R.id.map -> hideBottomNavigationView()
+                R.id.createAdHouse -> hideBottomNavigationView()
                 else -> showBottomNavigationView()
             }
         }
@@ -74,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.visibility = View.GONE
     }
 
-    private fun hideBars(){
+    private fun hideBars() {
         // Удалить Action Bar
         supportActionBar?.hide()
         // Убедитесь, что панель навигации учитывает системные окна

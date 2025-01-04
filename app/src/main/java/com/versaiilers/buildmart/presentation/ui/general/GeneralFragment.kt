@@ -37,8 +37,8 @@ class GeneralFragment : Fragment() {
         observeViewModel()
         viewModel.loadAdvertisements(1)
 
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.action_general_to_advertisement)
+//        Navigation.findNavController(binding.root)
+//            .navigate(R.id.action_general_to_advertisement)
     }
 
     private fun setupRecyclerView() {

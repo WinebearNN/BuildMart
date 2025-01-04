@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".presentation.ui.advertisement.CreateAdvertisementHouseFragment">
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear_layout_house_plot"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:text="Дом"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="27sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_weight="0.5"-->
+<!--            android:text="Участок"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="27sp"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
+
+<!--    app:layout_constraintTop_toBottomOf="@+id/linear_layout_house_plot"-->
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/linear_layout_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+
+
+            <FrameLayout
+                android:id="@+id/frame_layout_chapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Контент "Дом" -->
+                <LinearLayout
+                    android:id="@+id/linear_layout_house"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/address" />
+
+                        <TextView
+                            android:id="@+id/text_view_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="35dp"
+                            android:layout_margin="3dp"
+                            android:textSize="18sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="2dp"
+                            android:background="@drawable/rounded_rectangle"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_square"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:text="@string/house_square"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <EditText
+                            android:id="@+id/edit_text_square"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_margin="3dp"
+                            android:textSize="18sp"
+                            android:hint="@string/square_m2"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="2dp"
+                            android:background="@drawable/rounded_rectangle"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_floor_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:text="@string/floor_quantity"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_floor_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:backgroundTint="#DDDDDD"
+                                app:cornerRadius="5dp"
+                                android:textColor="@color/black"
+                                android:layout_marginEnd="3dp"
+                                android:layout_weight="0.2"
+                                android:text="@string/one"/>
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:backgroundTint="#DDDDDD"
+                                app:cornerRadius="5dp"
+                                android:textColor="@color/black"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_weight="0.2"
+                                android:text="@string/two"/>
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:backgroundTint="#DDDDDD"
+                                app:cornerRadius="5dp"
+                                android:textColor="@color/black"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_weight="0.2"
+                                android:text="@string/three"/>
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:backgroundTint="#DDDDDD"
+                                app:cornerRadius="5dp"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="3dp"
+                                android:textAllCaps="false"
+                                android:text="@string/four_and_more"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_finish_stage_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/finish_type"
+                            android:layout_margin="7dp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_finish_stage_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/finish_type_rough"
+                                android:layout_weight="0.5"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="#DDDDDD"
+                                android:layout_weight="0.5"
+                                android:text="@string/finish_type_final"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#DDDDDD"
+                            android:text="@string/finish_type_almost"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/wall_material" />
+                        <Button
+                            android:id="@+id/button_choose_wall_material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:text="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_gas_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/gas" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_gas_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.25"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textAllCaps="false"
+                                android:textAlignment="center"
+                                android:text="@string/gas_provided_to_house"/>
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.25"
+                                android:backgroundTint="#DDDDDD"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:textAllCaps="false"
+                                android:textAlignment="center"
+                                android:text="@string/absent"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:backgroundTint="#DDDDDD"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAllCaps="false"
+                            android:textAlignment="center"
+                            android:text="@string/gas_provided_to_land"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/foundation" />
+
+                        <Button
+                            android:id="@+id/button_choose_foundation_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:text="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/heating" />
+
+                        <Button
+                            android:id="@+id/button_choose_heating_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:text="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_warm_floor_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/warm_floor" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_warm_floor_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/electric"
+                                android:layout_weight="0.45"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/liquid"
+                                android:layout_weight="0.55"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:backgroundTint="#DDDDDD"
+                            android:text="@string/absent"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_water_supply_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/water_supply" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_water_supply_minor_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/sump"
+                                android:layout_weight="0.55"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/central"
+                                android:layout_weight="0.45"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_water_supply_minor_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/well"
+                                android:layout_weight="0.4"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/absent"
+                                android:layout_weight="0.6"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/sewerage" />
+
+                        <Button
+                            android:id="@+id/button_choose_sewerage_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:text="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:text="@string/year_of_creation"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <EditText
+                            android:id="@+id/edit_text_year_of_creation"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:textSize="18sp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="2dp"
+                            android:background="@drawable/rounded_rectangle"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_power_supply_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/power_supply" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_power_supply_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/exist"
+                                android:layout_weight="1"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/no"
+                                android:layout_weight="1"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_communications_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/communications" />
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_communications_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/internet"
+                                android:layout_weight="0.45"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/tv"
+                                android:layout_weight="0.55"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:backgroundTint="#DDDDDD"
+                            android:text="@string/absent"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!-- Контент "Участок" -->
+                <LinearLayout
+                    android:id="@+id/fragment_create_advertisement_linear_layout_plot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_square_land"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:text="@string/land_square"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <EditText
+                            android:id="@+id/edit_text_land_square"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_margin="3dp"
+                            android:textSize="18sp"
+                            android:hint="@string/square_acr"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingTop="2dp"
+                            android:background="@drawable/rounded_rectangle"/>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_add_buildings_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/additional_buildings" />
+
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_add_buildings_minor_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/bathhouse"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/garden"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/garage"
+                                android:layout_weight="0.3"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_add_buildings_minor_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/greenhouse"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/gazebo"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/parking_place" />
+
+                        <Button
+                            android:id="@+id/button_choose_parking_place"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:hint="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/land_type" />
+
+                        <Button
+                            android:id="@+id/button_choose_land_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"
+                            android:backgroundTint="#DDDDDD"
+                            android:textAllCaps="false"
+                            android:hint="@string/choose"
+                            app:cornerRadius="5dp"
+                            android:textAlignment="textStart"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_settlement_territory_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/settlement_territory" />
+
+
+
+                        <LinearLayout
+                            android:id="@+id/linear_layout_settlement_territory_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/open"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:backgroundTint="#DDDDDD"
+                                android:text="@string/closed"
+                                android:layout_weight="0.35"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="3dp"
+                            android:backgroundTint="#DDDDDD"
+                            android:text="@string/guarded"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_transport_accessibility_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_margin="7dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/transport_accessibility" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:padding="5dp"
+                                android:text="@string/paved_road"/>
+
+                            <CheckBox
+                                android:layout_weight="0.8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:padding="5dp"
+                                android:text="@string/public_transport_stop"/>
+
+                            <CheckBox
+                                android:layout_weight="0.8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:padding="5dp"
+                                android:text="@string/railway_station"/>
+
+                            <CheckBox
+                                android:layout_weight="0.8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/button_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continue"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

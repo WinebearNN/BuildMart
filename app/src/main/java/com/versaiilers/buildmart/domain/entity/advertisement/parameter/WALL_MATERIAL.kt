@@ -10,9 +10,21 @@ enum class WALL_MATERIAL(val value: Int, val translation: String) {
     SANDWICH_PANEL(7, "Сендвич-панель"),
     RC_PANEL(8, "Ж/б панель");
 
+
     companion object {
         fun fromValue(value: Int): WALL_MATERIAL? {
-            return values().find { it.value == value }
+            return entries.find { it.value == value }
+        }
+
+        fun fromTranslation(translation: String): WALL_MATERIAL? {
+            return entries.find { it.translation == translation }
+        }
+
+        fun getAllTranslations(): Array<String> {
+            return entries
+                .filter { it.value != -1 } // Исключаем объекты с value == -1
+                .map { it.translation } // Преобразуем оставшиеся объекты в их translation
+                .toTypedArray() // Преобразуем список в массив
         }
     }
 }

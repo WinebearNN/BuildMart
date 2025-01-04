@@ -52,12 +52,7 @@
         android:name="com.versaiilers.buildmart.presentation.ui.profile.ProfileFragment"
         android:label="Профиль"
         tools:layout="@layout/fragment_profile">
-        <action
-            android:id="@+id/action_profile_to_chat"
-            app:destination="@id/chat" />
-        <action
-            android:id="@+id/action_profile_to_general"
-            app:destination="@id/general" />
+
     </fragment>
 
     <!-- Фрагменты чата -->
@@ -66,9 +61,7 @@
         android:name="com.versaiilers.buildmart.presentation.ui.chat.ChatFragment"
         android:label="Чаты"
         tools:layout="@layout/fragment_chat">
-        <action
-            android:id="@+id/action_chat_to_profile"
-            app:destination="@id/profile" />
+
         <action
             android:id="@+id/action_chat_to_conversation"
             app:destination="@id/conversation">
@@ -76,9 +69,7 @@
                 android:name="chatGlobalId"
                 app:argType="long" />
         </action>
-        <action
-            android:id="@+id/action_chat_to_general"
-            app:destination="@id/general" />
+
     </fragment>
     <fragment
         android:id="@+id/conversation"
@@ -99,38 +90,40 @@
         android:name="com.versaiilers.buildmart.presentation.ui.general.GeneralFragment"
         android:label="fragment_general"
         tools:layout="@layout/fragment_general">
-        <action
-            android:id="@+id/action_general_to_profile"
-            app:destination="@id/profile" />
-        <action
-            android:id="@+id/action_general_to_chat"
-            app:destination="@id/chat" />
-        <action
-            android:id="@+id/action_general_to_advertisement"
-            app:destination="@id/advertisement" />
-        <action
-            android:id="@+id/action_general_self"
-            app:destination="@id/general" />
+
     </fragment>
     <fragment
         android:id="@+id/advertisement"
         android:name="com.versaiilers.buildmart.presentation.ui.advertisement.AdvertisementFragment"
         android:label="advertisement"
         tools:layout="@layout/fragment_advertisement" >
-        <action
-            android:id="@+id/action_advertisement_to_general"
-            app:destination="@id/general" />
-        <action
-            android:id="@+id/action_advertisement_to_createAd"
-            app:destination="@id/createAd" />
+
     </fragment>
     <fragment
-        android:id="@+id/createAd"
-        android:name="com.versaiilers.buildmart.presentation.ui.advertisement.CreateAdvertisementFragment"
-        android:label="CreateAd"
-        tools:layout="@layout/fragment_create_advertisement">
+        android:id="@+id/createAdHouse"
+        android:name="com.versaiilers.buildmart.presentation.ui.advertisement.CreateAdvertisementHouseFragment"
+        android:label="CreateAdHouse"
+        tools:layout="@layout/fragment_create_advertisement_house">
+
         <action
-            android:id="@+id/action_createAd_to_advertisement"
+            android:id="@+id/action_createAdHouse_to_map"
+            app:destination="@id/map" />
+        <action
+            android:id="@+id/action_createAdHouse_to_advertisement"
             app:destination="@id/advertisement" />
+    </fragment>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.versaiilers.buildmart.presentation.ui.map.MapFragment"
+        android:label="map"
+        tools:layout="@layout/fragment_map" >
+
+        <action
+            android:id="@+id/action_map_to_createAdHouse"
+            app:destination="@id/createAdHouse">
+            <argument
+                android:name="address"
+                app:argType="string" />
+        </action>
     </fragment>
 </navigation>

@@ -14,6 +14,7 @@ import com.versaiilers.buildmart.domain.entity.advertisement.parameter.TOILET_TY
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.TRANSPORT_ACCESSIBILITY
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.TV_TYPE
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WALL_MATERIAL
+import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WARM_FLOOR
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WATER_SUPPLY
 
 open class Advertisement(
@@ -29,46 +30,36 @@ open class Advertisement(
     var type: ADVERTISEMENT_TYPE
 )
 
-class HouseAd(
-    globalId: Long,
-    userGlobalId: Long,
-    srcLink: String,
-    title: String,
-    location: String,
-    rate: Float,
-    price: Int,
-    floor: Int,
-    saveFlag: Boolean,
-    type: ADVERTISEMENT_TYPE,
-    var description: String,
-    var landSquare: Double,
-    var powerSupply: Boolean,
-    var yearOfConstruction: Int,
-    var warmFloor: Boolean,
-    var ceilingHeight: Float,
-    var additionalBuildings: ADDITIONAL_BUILDINGS,
-    var finishStage: FINISH_STAGE,
-    var foundationType: FOUNDATION_TYPE,
-    var gas: GAS_TYPE,
-    var heatingType: HEATING_TYPE,
-    var landType: LAND_TYPE,
-    var parkingSpace: PARKING_SPACE,
-    var settlementTerritory: SETTLEMENT_TERRITORY,
-    var sewerageType: SEWERAGE_TYPE,
-    var toiletType: TOILET_TYPE,
-    var transportAccessibility: TRANSPORT_ACCESSIBILITY,
-    var tvType: TV_TYPE,
-    var wallMaterial: WALL_MATERIAL,
-    var waterSupply: WATER_SUPPLY
+data class HouseAd(
+    var description: String = "",
+    var landSquare: Double = 0.0,
+    var powerSupply: Boolean = false,
+    var yearOfConstruction: Int = 0,
+    var ceilingHeight: Float = 0f,
+    var additionalBuildings: ADDITIONAL_BUILDINGS = ADDITIONAL_BUILDINGS.ABSENT,
+    var finishStage: FINISH_STAGE = FINISH_STAGE.ROUGH,
+    var foundationType: FOUNDATION_TYPE = FOUNDATION_TYPE.PILE,
+    var gas: GAS_TYPE = GAS_TYPE.ABSENT,
+    var warmFloor: WARM_FLOOR = WARM_FLOOR.ABSENT,
+    var heatingType: HEATING_TYPE = HEATING_TYPE.ABSENT,
+    var landType: LAND_TYPE = LAND_TYPE.KUP,
+    var parkingSpace: PARKING_SPACE = PARKING_SPACE.ABSENT,
+    var settlementTerritory: SETTLEMENT_TERRITORY = SETTLEMENT_TERRITORY.OPEN,
+    var sewerageType: SEWERAGE_TYPE = SEWERAGE_TYPE.ABSENT,
+    var toiletType: TOILET_TYPE = TOILET_TYPE.NONE,//TODO remove
+    var transportAccessibility: TRANSPORT_ACCESSIBILITY = TRANSPORT_ACCESSIBILITY.ABSENT,
+    var tvType: TV_TYPE = TV_TYPE.ABSENT,
+    var wallMaterial: WALL_MATERIAL = WALL_MATERIAL.LOG,
+    var waterSupply: WATER_SUPPLY = WATER_SUPPLY.ABSENT
 ) : Advertisement(
-    globalId,
-    userGlobalId,
-    srcLink,
-    title,
-    location,
-    rate,
-    price,
-    floor,
-    saveFlag,
-    type
+    globalId = 0,
+    userGlobalId = 0,
+    srcLink = "",
+    title = "",
+    location = "",
+    rate = 0f,
+    price = 0,
+    floor = 0,
+    saveFlag = false,
+    type = ADVERTISEMENT_TYPE.HOUSE
 )

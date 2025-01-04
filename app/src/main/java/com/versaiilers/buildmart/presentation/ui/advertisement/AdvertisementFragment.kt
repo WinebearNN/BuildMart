@@ -30,11 +30,11 @@ class AdvertisementFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        Navigation.findNavController(binding.root)
-            .navigate(R.id.action_advertisement_to_createAd)
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        Navigation.findNavController(binding.root)
+//            .navigate(R.id.action_advertisement_to_map)
+//    }
 
 }
