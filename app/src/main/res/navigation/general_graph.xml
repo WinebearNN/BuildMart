@@ -109,8 +109,13 @@
             android:id="@+id/action_createAdHouse_to_map"
             app:destination="@id/map" />
         <action
-            android:id="@+id/action_createAdHouse_to_advertisement"
-            app:destination="@id/advertisement" />
+            android:id="@+id/action_createAdHouse_to_createAdLand"
+            app:destination="@id/createAdLand">
+            <argument
+                android:name="advertisement"
+                app:argType="string"/>
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/map"
@@ -125,5 +130,14 @@
                 android:name="address"
                 app:argType="string" />
         </action>
+    </fragment>
+    <fragment
+        android:id="@+id/createAdLand"
+        android:name="com.versaiilers.buildmart.presentation.ui.advertisement.CreateAdvertisementLandFragment"
+        android:label="fragment_create_ad_land"
+        tools:layout="@layout/fragment_create_advertisement_land" >
+        <action
+            android:id="@+id/action_createAdvertisementLandFragment_to_createAdHouse"
+            app:destination="@id/createAdHouse" />
     </fragment>
 </navigation>

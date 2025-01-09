@@ -11,4 +11,5 @@
     <color name="textColor">#FFFFFF</color>
     <color name="buttonInactive">#DDDDDD</color>
     <color name="buttonActive">#2F8FDB</color>
+    <color name="hintColor">#666666</color>
 </resources>

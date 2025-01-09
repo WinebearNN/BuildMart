@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
@@ -23,20 +26,19 @@ import com.versaiilers.buildmart.domain.entity.advertisement.parameter.TV_TYPE
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WALL_MATERIAL
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WARM_FLOOR
 import com.versaiilers.buildmart.domain.entity.advertisement.parameter.WATER_SUPPLY
-import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.KClass
 
 
-@AndroidEntryPoint
 class CreateAdvertisementHouseFragment : Fragment() {
 
     companion object {
         private const val TAG = "CreateAdvertisementFragment"
     }
 
+
+
     private var _binding: FragmentCreateAdvertisementHouseBinding? = null
     private val binding get() = _binding!!
-
-
 
 
     private var houseAd: HouseAd = HouseAd()
@@ -55,35 +57,57 @@ class CreateAdvertisementHouseFragment : Fragment() {
             .show()
     }
 
-
-    fun ViewGroup.setButtonSelection(
-        activeColor: Int,
-        inactiveColor: Int,
+    private fun <T : View> ViewGroup.setEntitySelectionSingular(
+        classInst: KClass<T>,
         onSelectionChanged: (String) -> Unit
     ) {
-        val buttons = mutableListOf<Button>()
+        val entities = mutableListOf<T>()
 
-        fun collectButtons(viewGroup: ViewGroup) {
-            viewGroup.children.forEach { child ->
-                if (child is Button) {
-                    buttons.add(child)
-                } else if (child is ViewGroup) {
-                    collectButtons(child)
+        collectEntities(
+            classInst,
+            entities,
+            this
+        )
+
+        entities.forEach { entity ->
+            if (entity is CheckBox) {
+                entity.setOnCheckedChangeListener { _, isChecked ->
+                    entities.forEach { sibling ->
+                        (sibling as CheckBox).isChecked = false
+                    }
+                    entity.isChecked = isChecked
+                    onSelectionChanged(((entity.parent as? LinearLayout)?.children?.find { it is TextView } as? TextView)?.text.toString())
+                }
+            } else if (entity is Button) {
+                entity.setOnClickListener {
+                    entities.forEach { sibling ->
+                        sibling.setBackgroundColor(
+                            ContextCompat.getColor(context, R.color.buttonInactive)
+                        )
+                    }
+                    entity.setBackgroundColor(ContextCompat.getColor(context, R.color.buttonActive))
+                    onSelectionChanged(entity.text.toString())
                 }
             }
         }
+    }
 
-        collectButtons(this)
 
-        buttons.forEach { button ->
-            button.setOnClickListener {
-                buttons.forEach { sibling ->
-                    sibling.setBackgroundColor(
-                        ContextCompat.getColor(context, inactiveColor)
-                    )
-                }
-                button.setBackgroundColor(ContextCompat.getColor(context, activeColor))
-                onSelectionChanged(button.text.toString()) // Передаем текст выбранной кнопки
+    private fun <T : View> collectEntities(
+        classInst: KClass<T>,
+        entities: MutableList<T>,
+        viewGroup: ViewGroup,
+    ) {
+        viewGroup.children.forEach { child ->
+            if (classInst.isInstance(child)) {
+                @Suppress("UNCHECKED_CAST")
+                entities.add(child as T)
+            } else if (child is ViewGroup) {
+                collectEntities(
+                    classInst,
+                    entities,
+                    child
+                )
             }
         }
     }
@@ -98,49 +122,33 @@ class CreateAdvertisementHouseFragment : Fragment() {
 
 //        squareText = binding.editTextSquare
 
-        binding.linearLayoutFloorMinor.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
-        ) { selectedText ->
-            // Обновляем houseAd.finishStage на основе выбранного текста
-            houseAd.floor = when (selectedText) {
-                getString(R.string.four_and_more) -> 4
-                else -> selectedText.toInt()
-            }
-            Log.i(TAG, "Floor quantity is ${houseAd.floor}")
-        }
 
-        binding.linearLayoutFinishStageMain.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutFinishStageMain.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.finishStage = FINISH_STAGE.fromTranslation(selectedText)
                 ?: throw IllegalArgumentException("Invalid finish stage translation: $selectedText")
             Log.i(TAG, "Finish stage is ${houseAd.finishStage.translation}")
-
         }
 
-        binding.linearLayoutGasMain.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutGasMain.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.gas = GAS_TYPE.fromTranslation(selectedText)
                 ?: throw IllegalArgumentException("Invalid gas type translation: $selectedText")
             Log.i(TAG, "Gas type is ${houseAd.gas.translation}")
         }
 
-        binding.linearLayoutWarmFloorMain.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutWarmFloorMain.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.warmFloor = WARM_FLOOR.fromTranslation(selectedText)
                 ?: throw IllegalArgumentException("Invalid warm floor translation: $selectedText")
             Log.i(TAG, "Warm floor type is ${houseAd.warmFloor.translation}")
         }
 
-        binding.linearLayoutWaterSupplyMain.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutWaterSupplyMain.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.waterSupply = WATER_SUPPLY.fromTranslation(selectedText)
                 ?: throw IllegalArgumentException("Invalid water supply translation: $selectedText")
@@ -148,9 +156,8 @@ class CreateAdvertisementHouseFragment : Fragment() {
 
         }
 
-        binding.linearLayoutPowerSupplyMinor.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutPowerSupplyMinor.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.powerSupply = when (selectedText) {
                 getString(R.string.exist) -> true
@@ -161,9 +168,8 @@ class CreateAdvertisementHouseFragment : Fragment() {
 
         }
 
-        binding.linearLayoutCommunicationsMain.setButtonSelection(
-            R.color.buttonActive,
-            R.color.buttonInactive
+        binding.linearLayoutCommunicationsMain.setEntitySelectionSingular(
+            Button::class
         ) { selectedText ->
             houseAd.tvType = TV_TYPE.fromTranslation(selectedText)
                 ?: throw IllegalArgumentException("Invalid tv type translation: $selectedText")
@@ -239,7 +245,7 @@ class CreateAdvertisementHouseFragment : Fragment() {
         initUI()
 
         binding.buttonContinue.setOnClickListener {
-            findNavController().navigate(R.id.action_createAdHouse_to_advertisement)
+            findNavController().navigate(R.id.action_createAdHouse_to_createAdLand)
         }
 
 
@@ -255,4 +261,53 @@ class CreateAdvertisementHouseFragment : Fragment() {
 
 
 }
+
+
+//private fun <T : View> ViewGroup.setEntitySelectionPlural(
+//    classInst: KClass<T>,
+//    onSelectionChanged: (String, Boolean) -> Unit
+//) {
+//    val childrenList = mutableListOf<T>()
+//
+//    collectEntities(
+//        classInst,
+//        childrenList,
+//        this
+//    )
+//
+//    childrenList.forEach { child ->
+//        if (child is CheckBox) {
+//            child.setOnCheckedChangeListener { _, isChecked ->
+//                onSelectionChanged(((child.parent as? LinearLayout)?.children?.find { it is TextView } as? TextView)?.text.toString(),
+//                    isChecked)
+//            }
+//        } else if (child is Button) {
+//            child.setOnClickListener {
+//                if (child.isActivated) {
+//                    child.isActivated = false
+//                    child.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            context,
+//                            R.color.buttonInactive
+//                        )
+//                    )
+//                    onSelectionChanged(child.text.toString(), false)
+//                } else {
+//                    child.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            context,
+//                            R.color.buttonActive
+//                        )
+//                    )
+//                    child.isActivated = true
+//                    onSelectionChanged(
+//                        child.text.toString(),
+//                        true
+//                    )
+//                }
+//            }
+//        }
+//    }
+//}
+//
 

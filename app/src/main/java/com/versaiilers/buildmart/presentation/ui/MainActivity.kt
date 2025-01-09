@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment -> hideBottomNavigationView()
                 R.id.map -> hideBottomNavigationView()
                 R.id.createAdHouse -> hideBottomNavigationView()
+                R.id.createAdLand -> hideBottomNavigationView()
                 else -> showBottomNavigationView()
             }
         }

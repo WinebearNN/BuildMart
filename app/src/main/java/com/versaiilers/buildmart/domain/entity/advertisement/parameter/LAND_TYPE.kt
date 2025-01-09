@@ -16,5 +16,12 @@ enum class LAND_TYPE(val value: Int, val translation: String) {
         fun fromTranslation(translation: String): LAND_TYPE? {
             return entries.find { it.translation == translation }
         }
+
+        fun getAllTranslations(): Array<String> {
+            return entries
+                .filter { it.value != -1 } // Исключаем объекты с value == -1
+                .map { it.translation } // Преобразуем оставшиеся объекты в их translation
+                .toTypedArray() // Преобразуем список в массив
+        }
     }
 }

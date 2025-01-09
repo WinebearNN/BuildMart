@@ -18,8 +18,6 @@
     <string name="email">Ваш email</string>
 
 
-
-
     <string name="exist">Есть</string>
     <string name="no">Нет</string>
     <string name="power_supply">Электричество</string>
@@ -73,4 +71,8 @@
     <string name="paved_road">Асфальтированная дорога</string>
     <string name="public_transport_stop">Остановка общественного транспорта</string>
     <string name="railway_station">Железнодорожная станция</string>
+    <string name="paved_area">Асфальтированная площадка</string>
+    <string name="underground_parking">Подземный паркинг</string>
+    <string name="multilevel_parking">Многоэтажный паркинг</string>
+    <string name="ground_parking">Наземный паркинг</string>
 </resources>
